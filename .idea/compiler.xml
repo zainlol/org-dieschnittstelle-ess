@@ -37,16 +37,14 @@
         <module name="wsv-client" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="bas" target="1.8" />
-      <module name="build-all" target="1.8" />
       <module name="build-all-modules" target="1.8" />
       <module name="build-ejb" target="1.8" />
       <module name="build-jrs" target="1.8" />
       <module name="build-jsf" target="1.8" />
       <module name="build-jws" target="1.8" />
       <module name="build-ser" target="1.8" />
-      <module name="demo-bas" target="1.8" />
       <module name="ejb-client" target="1.8" />
       <module name="ejb-earapp" target="1.8" />
       <module name="ejb-ejbmodule-crm" target="1.8" />
@@ -61,11 +59,7 @@
       <module name="jws-webapp" target="1.8" />
       <module name="lib-entities-crm" target="1.8" />
       <module name="lib-entities-erp" target="1.8" />
-      <module name="lib-esa-utils" target="1.8" />
       <module name="lib-utils" target="1.8" />
-      <module name="org.dieschnittstelle.ess.bas" target="1.8" />
-      <module name="org.dieschnittstelle.ess.jws.client" target="1.8" />
-      <module name="org.dieschnittstelle.ess.ue.jws4" target="1.8" />
       <module name="ser-client" target="1.8" />
       <module name="ser-webapp" target="1.8" />
       <module name="ue-add2" target="1.8" />

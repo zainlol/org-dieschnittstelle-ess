@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="EJB+JSF" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 14.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+  <configuration default="false" name="EJB+JSF" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 16.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
     <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/org.dieschnittstelle.ess.jsf/" />
     <option name="UPDATING_POLICY" value="redeploy-artifacts" />
     <deployment>
@@ -19,7 +19,6 @@
       <option name="PASSWORD" value="" />
     </server-settings>
     <predefined_log_file id="JBoss" enabled="true" />
-    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="54409" />
     </RunnerSettings>
@@ -68,8 +67,7 @@
         <option name="PROGRAM_PARAMETERS" value="" />
       </SHUTDOWN>
     </ConfigurationWrapper>
-    <method>
-      <option name="Make" enabled="false" />
+    <method v="2">
       <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.applications.jsf/pom.xml" goal="clean install" />
     </method>
   </configuration>

@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="JRS" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.12" ALTERNATIVE_JRE_ENABLED="false">
+    <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8888/org.dieschnittstelle.ess.jrs/gui.html" />
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
       <artifact name="jrs-webapp:war">
@@ -18,7 +19,6 @@
     <predefined_log_file id="Tomcat Manager" enabled="false" />
     <predefined_log_file id="Tomcat Host Manager" enabled="false" />
     <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="56632" />
     </RunnerSettings>
@@ -67,8 +67,7 @@
         <option name="PROGRAM_PARAMETERS" value="" />
       </SHUTDOWN>
     </ConfigurationWrapper>
-    <method>
-      <option name="Make" enabled="false" />
+    <method v="2">
       <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.applications.jrs/pom.xml" goal="clean install" />
     </method>
   </configuration>

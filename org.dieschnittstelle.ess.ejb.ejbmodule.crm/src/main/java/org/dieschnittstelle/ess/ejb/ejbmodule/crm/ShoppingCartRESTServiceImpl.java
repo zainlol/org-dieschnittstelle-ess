@@ -61,7 +61,7 @@ public class ShoppingCartRESTServiceImpl implements ShoppingCartRESTService {
 
     // if a task shall be scheduled every couple of seconds, also hour and minute need to be specied as "any" ('*')
     // because these attributes default to 0
-    @Schedule(second="*/10", hour="*", minute = "*", persistent = false)
+    @Schedule(second="*/30", hour="*", minute = "*", persistent = false)
     public void removeIdleCarts() {
         logger.info("removeIdleCarts(): idleTimeout is set to: " + idleTimeout);
 
