@@ -82,25 +82,21 @@ public class ShoppingCartStateful implements ShoppingCartRemote, ShoppingCartLoc
 	// lifecycle ejb logging: jboss complains about usage of default transaction attribute (REQUIRED), hence we explicitly set allowed values
 
 	@PostConstruct
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void beginn() {
 		logger.info("@PostConstruct");
 	}
 
 	@PreDestroy
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void abschluss() {
 		logger.info("@PreDestroy");
 	}
 
 	@PrePassivate
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void passiviere() {
 		logger.info("@PrePassivate");
 	}
 
 	@PostActivate
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void aktiviere() {
 		logger.info("@PostActivate");
 	}
