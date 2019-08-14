@@ -65,8 +65,8 @@
       </SHUTDOWN>
     </ConfigurationWrapper>
     <method v="2">
-      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.applications.ejb/pom.xml" goal="clean install" />
-      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.ejb/pom.xml" goal="install" />
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/demo.org.dieschnittstelle.ess.ejb.runnable/pom.xml" goal="clean install" />
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/demo.org.dieschnittstelle.ess.ejb/pom.xml" goal="install" />
     </method>
   </configuration>
 </component>

@@ -25,7 +25,6 @@ public class LocalRunTouchpointExecutor {
 		show("after loading: " + exec.readAllTouchpoints());
 		
 		exec.load();
-		
 		while (true) {
 			String cmd = readInput();
 			if ("c".equals(cmd)) {
@@ -40,13 +39,14 @@ public class LocalRunTouchpointExecutor {
 				List<AbstractTouchpoint> tps = exec.readAllTouchpoints();
 				if (tps.size() > 0) {
 					show(exec.deleteTouchpoint(tps.get(0).getId()));
-				}				
+				}
 			}
 			else if ("s".equals(cmd)) {
 				exec.store();
 				break;
 			}
 		}
+
 		
 		System.out.println("done.");
 		
