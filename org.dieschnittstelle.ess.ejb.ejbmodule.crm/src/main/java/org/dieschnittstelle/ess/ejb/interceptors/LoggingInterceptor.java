@@ -72,25 +72,31 @@ public class LoggingInterceptor {
 		/*
 		 * execute the method
 		 */
-		Object result = context.proceed();
+		try {
+			Object result = context.proceed();
 
-		/*
-		 * log the output
-		 */
-		buf.setLength(0);
-		buf.append(prefix);
+			/*
+			 * log the output
+			 */
+			buf.setLength(0);
+			buf.append(prefix);
 
-		// check whether we have a void method
-		if (context.getMethod().getReturnType() == Void.TYPE) {
-			buf.append(": returned");
-		} else {
-			buf.append(": got return value: ");
-			buf.append(result);
+			// check whether we have a void method
+			if (context.getMethod().getReturnType() == Void.TYPE) {
+				buf.append(": returned");
+			} else {
+				buf.append(": got return value: ");
+				buf.append(result);
+			}
+
+			getLogger(context.getTarget().getClass()).info(buf.toString());
+
+			return result;
 		}
-
-		getLogger(context.getTarget().getClass()).info(buf.toString());
-
-		return result;
+		catch (Exception e) {
+			getLogger(context.getTarget().getClass()).error(prefix + ": got exception: " + e,e);
+			throw e;
+		}
 	}
 
 }
