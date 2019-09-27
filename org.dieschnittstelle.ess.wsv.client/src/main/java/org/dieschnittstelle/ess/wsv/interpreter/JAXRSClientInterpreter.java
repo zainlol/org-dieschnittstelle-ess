@@ -128,7 +128,7 @@ public class JAXRSClientInterpreter implements InvocationHandler {
             Object returnValue = null;
 
             // TODO: convert the resonse body to a java object of an appropriate type considering the return type of the method and set the object as value of returnValue
-            // if the return type of the mis a generic type, getGenericReturnType() will return a non null result, otherwise use getReturnType()
+            // in order to check whether the return type of meth is parameterised generic type, you can use the following expression (meth.getGenericReturnType() instanceof ParameterizedType)
 
             // don't forget to cleanup the entity using EntityUtils.consume()
             if (bae != null) {
