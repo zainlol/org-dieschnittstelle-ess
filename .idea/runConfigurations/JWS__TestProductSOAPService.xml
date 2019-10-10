@@ -12,7 +12,8 @@
     <option name="METHOD_NAME" value="" />
     <option name="PARAMETERS" value="" />
     <method v="2">
-      <option name="Make" enabled="true" />
+      <option name="Make" enabled="false" />
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.jws.client/pom.xml" goal="clean install" />
     </method>
   </configuration>
 </component>
