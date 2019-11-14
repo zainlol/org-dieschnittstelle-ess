@@ -529,8 +529,5 @@
         </outbound-socket-binding>
     </socket-binding-group>
     <deployments>
-        <deployment name="org.dieschnittstelle.ess.jws.war" runtime-name="org.dieschnittstelle.ess.jws.war">
-            <fs-archive path="/Users/master/Documents/jkwrite/bht/runtime/workspaces/essworkspace_w19/org.dieschnittstelle.ess/org.dieschnittstelle.ess.jws/target/org.dieschnittstelle.ess.jws.war"/>
-        </deployment>
     </deployments>
 </server>
