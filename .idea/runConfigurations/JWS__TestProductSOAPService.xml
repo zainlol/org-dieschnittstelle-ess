@@ -10,10 +10,10 @@
     <option name="PACKAGE_NAME" value="org.dieschnittstelle.ess.ue.jws5.junit" />
     <option name="MAIN_CLASS_NAME" value="org.dieschnittstelle.ess.ue.jws5.junit.TestProductSOAPService" />
     <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
     <option name="PARAMETERS" value="" />
     <method v="2">
-      <option name="Make" enabled="false" />
-      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.jws.client/pom.xml" goal="clean install" />
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/org.dieschnittstelle.ess.ue.jws5/pom.xml" goal="clean install" />
     </method>
   </configuration>
 </component>
