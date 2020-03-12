@@ -20,7 +20,7 @@ else {
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Touchpoints</title>
+<title>SER Touchpoints</title>
 </head>
 <body>
 	<!--  print out the class hierarchy -->
@@ -38,7 +38,7 @@ else {
 	%>
 
 	<!--  access session attributes and their constituents -->
-	<h3>Touchpoints</h3>
+	<h3>SER Touchpoints</h3>
 
 	<!-- create a table -->
 	<table border="1">
