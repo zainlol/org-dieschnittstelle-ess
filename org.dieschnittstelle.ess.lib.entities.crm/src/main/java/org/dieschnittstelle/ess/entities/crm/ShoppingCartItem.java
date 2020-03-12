@@ -14,6 +14,7 @@ import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
@@ -43,6 +44,7 @@ public class ShoppingCartItem implements Serializable {
 	private boolean isCampaign;
 	
 	@Transient
+	@JsonIgnore
 	private AbstractProduct productObj;
 	
 	public ShoppingCartItem() {

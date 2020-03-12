@@ -99,10 +99,11 @@ public class EJBProxyFactory {
         this.useWebAPIAsDefault = useWebAPIAsDefault;
 
         // we check whether polymorphism is handled for products and touchpoints
-        if (useWebAPIAsDefault && (!AbstractTouchpoint.class.isAnnotationPresent(JsonTypeInfo.class) || !AbstractProduct.class.isAnnotationPresent(JsonTypeInfo.class))) {
-            throw new EJBProxyException("access to web api cannot be supported as polymorphism is not handled completely. Check annotations on AbstractTouchpoint and AbstractProduct! Remember to also restart the server-side application once changes have been made.");
-        }
-        else {
+        if (useWebAPIAsDefault && !AbstractTouchpoint.class.isAnnotationPresent(JsonTypeInfo.class)) {
+            throw new EJBProxyException("access to web api cannot be supported as polymorphism is not handled sufficiently. Check annotations on AbstractTouchpoint! Remember to also restart the server-side application once changes have been made.");
+        } else if (useWebAPIAsDefault && !AbstractProduct.class.isAnnotationPresent(JsonTypeInfo.class)) {
+            logger.warn("NOTE THAT AbstractProduct might need to be prepared for polymorphism in order for WebAPI access to work overall correctly. Remember to also restart the server-side application once changes have been made.");
+        } else {
             logger.info("consistency check of datamodel classes succeeded. Both ejb and web api access should work.");
         }
 
