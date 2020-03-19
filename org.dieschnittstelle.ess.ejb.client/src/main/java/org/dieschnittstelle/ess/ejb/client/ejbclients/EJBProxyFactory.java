@@ -43,13 +43,28 @@ public class EJBProxyFactory {
 
     }
 
+    private static Properties essClientProperties = new Properties();
+
+    public static final String PROPERTY_USE_WEB_API_AS_DEFAULT = "ess.ejb.client.useWebAPIAsDefault";
+    public static final String PROPERTY_WEB_API_BASE_URL = "ess.ejb.client.webAPIBaseUrl";
+
+    static {
+        try {
+            essClientProperties.load(EJBProxyFactory.class.getClassLoader().getResourceAsStream("ess-ejb-client.properties"));
+            logger.info("initialise(): loaded properties: " + essClientProperties);
+        }
+        catch (Exception e) {
+            throw new EJBProxyException("<static initialiser> got exception trying to read client properties: " + e,e);
+        }
+    }
+
     // the instance
     private static EJBProxyFactory instance;
 
     // public method for initialising the factory
     public static void initialise(String webAPIBaseUrl,boolean useWebAPI) {
-        logger.info("initialise(): webAPIBaseUrl: " + webAPIBaseUrl);
         logger.info("initialise(): useWebAPIAsDefault: " + useWebAPI);
+        logger.info("initialise(): webAPIBaseUrl: " + webAPIBaseUrl);
         if (instance != null) {
             logger.warn("initialise() was called on EJBProxyFactory, but there already exists an instance. Will not overwrite it.");
             return;
@@ -57,24 +72,13 @@ public class EJBProxyFactory {
         instance = new EJBProxyFactory(webAPIBaseUrl,useWebAPI);
     }
 
+    public static void initialise(boolean useWebAPI) {
+        initialise(essClientProperties.getProperty(PROPERTY_WEB_API_BASE_URL),useWebAPI);
+    }
+
     // alternative initialisation which will result in properties (base url and web api default usage) being read from a configuration file
     public static void initialise() {
-        if (instance != null) {
-            logger.warn("initialise() was called on EJBProxyFactory, but there already exists an instance. Will not overwrite it.");
-            return;
-        }
-
-        try {
-            Properties props = new Properties();
-            props.load(EJBProxyFactory.class.getClassLoader().getResourceAsStream("ess-ejb-client.properties"));
-            logger.info("initialise(): loaded properties: " + props);
-
-            initialise(props.getProperty("ess.ejb.client.webAPIBaseUrl", Constants.WEB_API_BASE_URL),Boolean.valueOf(props.getProperty("esa.ejb.client.useWebAPIAsDefault","false")));
-        }
-        catch (Exception e) {
-            throw new EJBProxyException("initialise(): got exception trying to read properties from file: " + e,e);
-        }
-
+        initialise(Boolean.valueOf(essClientProperties.getProperty(PROPERTY_USE_WEB_API_AS_DEFAULT,"false")));
     }
 
 

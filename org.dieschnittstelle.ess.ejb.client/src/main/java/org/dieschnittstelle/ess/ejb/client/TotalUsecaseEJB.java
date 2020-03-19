@@ -11,7 +11,7 @@ public class TotalUsecaseEJB {
 
 	public static void main(String[] args) {
 		// here, we will use ejb proxies for accessing the server-side components
-		EJBProxyFactory.initialise(WEB_API_BASE_URL,false);
+		EJBProxyFactory.initialise(false);
 
 		try {
 			(new TotalUsecase()).runAll();

@@ -28,11 +28,6 @@ public class Constants {
 	public static final String TRANSACTIONS_CRUD_BEAN_URI = "ejb:org.dieschnittstelle.ess.ejb/org.dieschnittstelle.ess.ejb.ejbmodule.crm/CustomerTransactionCRUDStateless!org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerTransactionCRUDRemote";
 
 	/*
-	 * the base url of the web api
-	 */
-	public static final String WEB_API_BASE_URL = "http://localhost:8080/org.dieschnittstelle.ess.ejb.webapp/api/";
-
-	/*
 	 * constants for the objects that are dealt with in the different accessors
 	 * to the beans
 	 */
