@@ -50,4 +50,8 @@ public class ShoppingCartClient implements ShoppingCartRemote {
 		}
 	}
 
+	public long getShoppingCartEntityId() {
+		return shoppingCartEntityId;
+	}
+
 }

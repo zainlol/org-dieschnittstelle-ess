@@ -5,6 +5,7 @@ import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
+// TODO: PAT1: this is the interface to be provided as a stateful ejb if ejb access is used
 public interface ShoppingSessionFacadeRemote {
 
 	public void setTouchpoint(AbstractTouchpoint touchpoint);

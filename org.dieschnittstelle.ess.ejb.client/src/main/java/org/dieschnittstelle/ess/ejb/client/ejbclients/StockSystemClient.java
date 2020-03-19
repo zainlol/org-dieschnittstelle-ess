@@ -16,8 +16,8 @@ public class StockSystemClient implements StockSystemRemote {
 	public StockSystemClient() throws Exception {
 		// TODO: remove the comments and complete the implementation
 
-//		// TODO: if the REST API shall be accessed, only the service interface needs to be specified when obtaining the proxy
-//		// (starting from S20, this is the default behaviour - note that the base url of the web api is specified in ess-ejb-client.properties)
+		// TODO: if the REST API shall be accessed, only the service interface needs to be specified when obtaining the proxy
+		//  (starting from S20, this is the default behaviour - note that the base url of the web api is specified in ess-ejb-client.properties)
 //		if (EJBProxyFactory.getInstance().usesWebAPIAsDefault()) {
 //			this.serviceProxy = EJBProxyFactory.getInstance().getProxy(null,null,true);
 //		}

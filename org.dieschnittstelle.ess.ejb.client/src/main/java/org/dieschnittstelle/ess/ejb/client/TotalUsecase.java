@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.*;
-import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingSessionFacadeClient;
+import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingSessionClient;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.CampaignTrackingRemote;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.ShoppingException;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.TouchpointAccessRemote;
@@ -178,7 +178,7 @@ public class TotalUsecase {
 					}
 					else {
 						// for PAT1: use the ShoppingSessionFacadeClient as implementation of the business delegate
-						session = new ShoppingSessionFacadeClient();
+						session = new ShoppingSessionClient();
 					}
 					
 					// add a customer and a touchpoint
