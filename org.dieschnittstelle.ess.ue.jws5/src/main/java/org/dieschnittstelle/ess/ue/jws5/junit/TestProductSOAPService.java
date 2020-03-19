@@ -14,7 +14,7 @@ package org.dieschnittstelle.ess.ue.jws5.junit;
 //import org.junit.Test;
 
 /*
- * UE JWS5: rufen Sie hier den in JWS4 implementierten Web Service auf.
+ * TODO JWS5: rufen Sie hier den in JWS4 implementierten Web Service auf.
  */
 public class TestProductSOAPService {
 

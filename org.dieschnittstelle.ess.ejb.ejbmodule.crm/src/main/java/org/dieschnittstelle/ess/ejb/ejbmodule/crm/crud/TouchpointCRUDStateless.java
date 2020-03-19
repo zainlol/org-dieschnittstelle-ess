@@ -22,14 +22,14 @@ public class TouchpointCRUDStateless implements TouchpointCRUDRemote,
 	private EntityManager em;
 
 	/*
-	 * UE ADD1: run CreateTouchpointsAccessingCRUD in the client project with the @TransactionAttribute commented in - what happens?
+	 * TODO ADD1: run CreateTouchpointsAccessingCRUD in the client project with the @TransactionAttribute commented in - what happens?
 	 */
 	@Override
 	//@TransactionAttribute(TransactionAttributeType.MANDATORY)
 	public AbstractTouchpoint createTouchpoint(AbstractTouchpoint touchpoint) throws ShoppingException {
 
 		/*
-		 * UE ADD1: swap true/false
+		 * TODO ADD1: swap true/false
 		 */		
 		if (/*true*/false) {
 			throw new RuntimeException(new ShoppingException(

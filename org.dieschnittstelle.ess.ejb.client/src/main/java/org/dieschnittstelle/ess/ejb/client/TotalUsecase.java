@@ -177,7 +177,7 @@ public class TotalUsecase {
 						session = new ShoppingSession();
 					}
 					else {
-						// for PAT1: use the ShoppingSessionFacadeClient as implementation of the business delegate
+						// for PAT1: use the ShoppingSessionClient as implementation of the business delegate
 						session = new ShoppingSessionClient();
 					}
 					

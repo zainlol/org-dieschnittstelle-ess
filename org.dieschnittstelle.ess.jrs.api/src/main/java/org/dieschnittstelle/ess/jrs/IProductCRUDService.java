@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 /*
- * UE JRS3: aendern Sie Argument- und Rueckgabetypen der Methoden von IndividualisedProductItem auf AbstractProduct
+ * TODO JRS3: aendern Sie Argument- und Rueckgabetypen der Methoden von IndividualisedProductItem auf AbstractProduct
  */
 public interface IProductCRUDService {
 

@@ -112,7 +112,7 @@ public class ShoppingSession implements ShoppingBusinessDelegate {
 	}
 
 	/*
-	 * to be implemented as server-side method for PAT2
+	 * TODO PAT2: complete the method implementation in your server-side component for shopping / purchasing
 	 */
 	private void checkAndRemoveProductsFromStock() {
 		logger.info("checkAndRemoveProductsFromStock");

@@ -5,11 +5,10 @@ import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import java.util.List;
 
 /**
- * TODO:
- * if you decide to expose the stock system functionality using REST services rather than remote EJB interfaces:
+ * TODO JPA3/4/6:
  * - declare the web api for this interface using JAX-RS
  * - implement the interface as an EJB of an appropriate type
- * - in the EJB, delegate method invocations to the corresponding methods of the StockSystem EJB
+ * - in the EJB implementation, delegate method invocations to the corresponding methods of the StockSystem EJB via the local interface
  * - let the StockSystemClient in the client project access the web api via this interface - see ShoppingCartClient for an example
  */
 public interface StockSystemRESTService {

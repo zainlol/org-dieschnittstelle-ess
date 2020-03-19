@@ -27,7 +27,7 @@ public class ShowAnnotations {
 	}
 
 	/*
-	 * UE BAS2 
+	 * TODO BAS2
 	 */
 	private static void showAttributes(Object consumable) {
 		show("class is: " + consumable.getClass());

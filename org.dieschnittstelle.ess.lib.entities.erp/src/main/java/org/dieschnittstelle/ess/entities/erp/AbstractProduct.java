@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.GenericCRUDEntity;
 
 /*
- * UE JRS3: entfernen Sie die Auskommentierung der Annotation
+ * TODO JRS3: entfernen Sie die Auskommentierung der Annotation
  */
 //@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 public abstract class AbstractProduct implements Serializable, GenericCRUDEntity {

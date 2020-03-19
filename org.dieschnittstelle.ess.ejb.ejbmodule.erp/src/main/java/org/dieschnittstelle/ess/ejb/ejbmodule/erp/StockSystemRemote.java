@@ -5,7 +5,7 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 /**
- * TODO JPA4:
+ * OBSOLETE IF REST ACCESS IS USED TO SERVER-SIDE COMPONENTS:
  * this interface shall be implemented using the two CRUD EJBs for PointOfSale and StockItem via
  * local interface below, comments will give some hints at how the implementation could be done
  */

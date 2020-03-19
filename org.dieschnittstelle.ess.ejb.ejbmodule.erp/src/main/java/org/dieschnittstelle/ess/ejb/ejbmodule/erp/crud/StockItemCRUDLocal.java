@@ -9,7 +9,7 @@ import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.dieschnittstelle.ess.entities.erp.StockItem;
 
 /*
- * TODO JPA4:
+ * TODO EJB+JPA3/4/6:
  * this interface shall be implemented using a stateless EJB with an EntityManager.
  * See the comments below for hints at how to implement the methods
  */

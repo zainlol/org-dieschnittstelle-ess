@@ -5,7 +5,7 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 /*
-UE JRS2: implementieren Sie hier die im Interface deklarierten Methoden
+ * TODO JRS2: implementieren Sie hier die im Interface deklarierten Methoden
  */
 
 public class ProductCRUDServiceImpl implements IProductCRUDService {

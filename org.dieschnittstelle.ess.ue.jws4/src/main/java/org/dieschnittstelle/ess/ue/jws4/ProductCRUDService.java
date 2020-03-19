@@ -21,9 +21,9 @@ import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.ProductType;
 
 /*
- * UE JWS4: machen Sie die Funktionalitaet dieser Klasse als Web Service verfuegbar und verwenden Sie fuer 
- * die Umetzung der Methoden die Instanz von GenericCRUDExecutor<AbstractProduct>,
- * die Sie aus dem ServletContext auslesen koennen
+ * TODO JWS4: machen Sie die Funktionalitaet dieser Klasse als Web Service verfuegbar und verwenden Sie fuer
+ *  die Umetzung der Methoden die Instanz von GenericCRUDExecutor<AbstractProduct>,
+ *  die Sie aus dem ServletContext auslesen koennen
  */
 public class ProductCRUDService {
 

@@ -99,7 +99,7 @@ public class ShowTouchpointSOAPService {
 //			tp.setName("BHT Mensa");
 //
 //			/*
-//			 * UE JWS3: add a call to the update method of the web service, passing tp
+//			 * TODO JWS3: add a call to the update method of the web service, passing tp
 //			 */
 //
 //			logger.info("TestTouchpointSOAPService: done.\n");

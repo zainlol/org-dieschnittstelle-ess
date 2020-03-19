@@ -77,7 +77,7 @@ public abstract class AbstractTouchpoint implements Serializable, GenericCRUDEnt
 	protected String name;
 
 	/*
-	 * UE JWS2: kommentieren Sie @XmlTransient aus
+	 * TODO JWS2: kommentieren Sie @XmlTransient aus
 	 */
 	@XmlTransient
 	@ManyToMany

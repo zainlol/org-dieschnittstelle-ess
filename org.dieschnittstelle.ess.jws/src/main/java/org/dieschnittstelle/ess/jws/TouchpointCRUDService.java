@@ -108,7 +108,7 @@ public class TouchpointCRUDService {
 	}
 	
 	/*
-	 * UE JWS3: erweitern Sie den Service
+	 * TODO JWS3: erweitern Sie den Service
 	 */
 
 }

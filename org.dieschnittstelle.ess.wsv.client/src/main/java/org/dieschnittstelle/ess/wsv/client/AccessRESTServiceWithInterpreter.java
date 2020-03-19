@@ -23,7 +23,7 @@ public class AccessRESTServiceWithInterpreter {
     public static void main(String[] args) {
 
 		/*
-		 * TODO: create an instance of the invocation handler passing the service
+		 * TODO WSV1 (here and following TODOs): create an instance of the invocation handler passing the service
 		 * interface and the base url
 		 */
         JAXRSClientInterpreter invocationHandler = null;

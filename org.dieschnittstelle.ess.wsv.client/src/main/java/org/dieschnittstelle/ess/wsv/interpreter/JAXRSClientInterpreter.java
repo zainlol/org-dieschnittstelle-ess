@@ -32,7 +32,7 @@ import static org.dieschnittstelle.ess.utils.Utils.*;
 
 
 /*
- * TODO: implement this class such that the crud operations declared on ITouchpointCRUDService in .ess.wsv can be successfully called from the class AccessRESTServiceWithInterpreter in the .esa.wsv.client project
+ * TODO WSV1: implement this class such that the crud operations declared on ITouchpointCRUDService in .ess.wsv can be successfully called from the class AccessRESTServiceWithInterpreter in the .esa.wsv.client project
  */
 public class JAXRSClientInterpreter implements InvocationHandler {
 
