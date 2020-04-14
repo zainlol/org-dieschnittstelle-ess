@@ -4,6 +4,8 @@ package org.dieschnittstelle.ess.basics;
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
 
+import java.lang.reflect.Field;
+
 import static org.dieschnittstelle.ess.utils.Utils.*;
 
 public class ShowAnnotations {
@@ -26,11 +28,20 @@ public class ShowAnnotations {
 		consumer.doShopping(collection.getStockItems());
 	}
 
-	/*
-	 * TODO BAS2
-	 */
 	private static void showAttributes(Object consumable) {
-		show("class is: " + consumable.getClass());
+		StringBuilder builder = new StringBuilder();
+		builder.append("{" + consumable.getClass().getSimpleName() + " ");
+		for(Field f : consumable.getClass().getDeclaredFields()){
+			f.setAccessible(true);
+			try {
+				builder.append(f.getName() + ":" + f.get(consumable) + ",");
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		builder.delete(builder.length() -1, builder.length());
+		builder.append("}");
+		show(builder.toString());
 	}
 
 }
