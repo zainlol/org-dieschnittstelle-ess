@@ -3,6 +3,7 @@ package org.dieschnittstelle.ess.basics;
 
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
+import org.dieschnittstelle.ess.basics.annotations.stockitemtypes.DisplayAs;
 
 import java.lang.reflect.Field;
 
@@ -33,8 +34,11 @@ public class ShowAnnotations {
 		builder.append("{" + consumable.getClass().getSimpleName() + " ");
 		for(Field f : consumable.getClass().getDeclaredFields()){
 			f.setAccessible(true);
+			String name = f.getAnnotation(DisplayAs.class) != null ?
+					f.getAnnotation(DisplayAs.class).value()
+					: f.getName();
 			try {
-				builder.append(f.getName() + ":" + f.get(consumable) + ",");
+				builder.append(name + ":" + f.get(consumable) + ",");
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			}

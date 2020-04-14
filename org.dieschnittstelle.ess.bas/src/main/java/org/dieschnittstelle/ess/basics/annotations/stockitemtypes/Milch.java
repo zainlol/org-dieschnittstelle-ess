@@ -8,7 +8,7 @@ import org.dieschnittstelle.ess.basics.annotations.Units;
 
 @StockItem
 public class Milch {
-
+	@DisplayAs("Nicht Anzahl")
 	@Units
 	private int menge;
 

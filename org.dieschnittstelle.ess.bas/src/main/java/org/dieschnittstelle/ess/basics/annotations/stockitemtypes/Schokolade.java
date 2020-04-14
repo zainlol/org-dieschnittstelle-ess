@@ -8,7 +8,7 @@ import org.dieschnittstelle.ess.basics.annotations.Units;
 
 @StockItem
 public class Schokolade {
-
+	@DisplayAs("Anzahl")
 	@Units
 	private int anzahlStuecke;
 
