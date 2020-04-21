@@ -58,7 +58,7 @@ public class TouchpointServiceServletAsync extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest request,
 							 HttpServletResponse response) throws ServletException, IOException{
-		logger.info("doGet()");
+		logger.info("doDelete()");
 
 		AsyncContext asyncCtx = request.startAsync();
 		RequestDispatcher dispatcher = asyncCtx.getRequest().getRequestDispatcher("/api/touchpoints");
