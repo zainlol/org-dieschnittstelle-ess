@@ -59,7 +59,6 @@ public class TouchpointCRUDExecutor {
 	 */
 	public AbstractTouchpoint createTouchpoint(AbstractTouchpoint touchpoint) {
 		logger.info("createTouchpoint(): " + touchpoint);
-
 		// assign an id and add it to the list
 		touchpoint.setId(++currentTouchpointId);
 		this.touchpoints.add(touchpoint);

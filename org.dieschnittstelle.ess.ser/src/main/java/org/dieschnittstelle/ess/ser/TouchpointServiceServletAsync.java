@@ -2,13 +2,17 @@ package org.dieschnittstelle.ess.ser;
 
 import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.Logger;
+import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import static org.dieschnittstelle.ess.utils.Utils.show;
@@ -25,7 +29,7 @@ public class TouchpointServiceServletAsync extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws ServletException, IOException{
 
 		logger.info("doGet()");
 
@@ -50,38 +54,60 @@ public class TouchpointServiceServletAsync extends HttpServlet {
 		}).start();
 
 	}
-	
-	/*
-	@Override	
+
+	@Override
+	protected void doDelete(HttpServletRequest request,
+							 HttpServletResponse response) throws ServletException, IOException{
+		logger.info("doGet()");
+
+		AsyncContext asyncCtx = request.startAsync();
+		RequestDispatcher dispatcher = asyncCtx.getRequest().getRequestDispatcher("/api/touchpoints");
+
+		new Thread(()->{
+			logger.info("doDelete(): sleeping...");
+			try {
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			logger.info("doDelete(): continuing...");
+			try {
+				dispatcher.forward(asyncCtx.getRequest(), asyncCtx.getResponse());
+			}
+			catch (Exception e) {
+				response.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+			}
+		}).start();
+	}
+
+	@Override
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) {
+						  HttpServletResponse response) throws ServletException, IOException {
 
-		// assume POST will only be used for touchpoint creation, i.e. there is
-		// no need to check the uri that has been used
+		logger.info("doPost()");
 
-		// obtain the executor for reading out the touchpoints from the servlet context using the touchpointCRUD attribute
+		AsyncContext asyncCtx = request.startAsync();
+		RequestDispatcher dispatcher = asyncCtx.getRequest().getRequestDispatcher("/api/touchpoints");
 
-		try {
-			// create an ObjectInputStream from the request's input stream
-		
-			// read an AbstractTouchpoint object from the stream
-		
-			// call the create method on the executor and take its return value
-		
-			// set the response status as successful, using the appropriate
-			// constant from HttpServletResponse
-		
-			// then write the object to the response's output stream, using a
-			// wrapping ObjectOutputStream
-		
-			// ... and write the object to the stream
-		
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		new Thread(()->{
+			logger.info("doPost(): sleeping...");
+			try {
+				Thread.sleep(2000);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			logger.info("doPost(): continuing...");
+			try {
+				dispatcher.forward(asyncCtx.getRequest(), asyncCtx.getResponse());
+			}
+			catch (Exception e) {
+				response.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+			}
+		}).start();
 
 	}
-	*/
 
 
 	
