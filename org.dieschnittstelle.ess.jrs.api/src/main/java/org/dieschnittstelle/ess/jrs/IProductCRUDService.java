@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.jrs;
 
+import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 import javax.ws.rs.*;
@@ -17,30 +18,28 @@ import java.util.List;
  * und machen Sie diese Methoden mittels JAX-RS Annotationen als WebService verfuegbar
  */
 
-/*
- * TODO JRS3: aendern Sie Argument- und Rueckgabetypen der Methoden von IndividualisedProductItem auf AbstractProduct
- */
+
 @Path("/products")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public interface IProductCRUDService {
 
 	@POST
-	public IndividualisedProductItem createProduct(IndividualisedProductItem prod);
+	public AbstractProduct createProduct(AbstractProduct  prod);
 
 	@GET
-	public List<IndividualisedProductItem> readAllProducts();
+	public List<AbstractProduct> readAllProducts();
 
 	@PUT
 	@Path("/{productId}")
-	public IndividualisedProductItem updateProduct(@PathParam("productId") long id,
-												   IndividualisedProductItem update);
+	public AbstractProduct  updateProduct(@PathParam("productId") long id,
+										  AbstractProduct  update);
 	@DELETE
 	@Path("/{productId}")
 	boolean deleteProduct(@PathParam("productId")long id);
 
 	@GET
 	@Path("/{productId}")
-	public IndividualisedProductItem readProduct(@PathParam("productId")long id);
+	public AbstractProduct readProduct(@PathParam("productId")long id);
 			
 }
