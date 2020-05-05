@@ -96,9 +96,7 @@ public class ShowTouchpointSOAPService {
 			// change the name
 			tp.setName("BHT Mensa");
 
-			/*
-			 * TODO JWS3: add a call to the update method of the web service, passing tp
-			 */
+			serviceProxy.updateTouchpoint(tp);
 
 			logger.info("TestTouchpointSOAPService: done.\n");
 		} catch (Exception e) {

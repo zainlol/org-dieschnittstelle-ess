@@ -107,8 +107,14 @@ public class TouchpointCRUDService {
 		return touchpointCRUD.deleteObject(id);
 	}
 	
-	/*
-	 * TODO JWS3: erweitern Sie den Service
-	 */
 
+	@WebMethod
+	public AbstractTouchpoint updateTouchpoint(AbstractTouchpoint touchpoint){
+		GenericCRUDExecutor<AbstractTouchpoint> touchpointCRUD = (GenericCRUDExecutor<AbstractTouchpoint>) ((ServletContext) wscontext
+				.getMessageContext().get(MessageContext.SERVLET_CONTEXT))
+				.getAttribute("touchpointCRUD");
+
+		return (StationaryTouchpoint) touchpointCRUD
+				.updateObject(touchpoint);
+	}
 }
