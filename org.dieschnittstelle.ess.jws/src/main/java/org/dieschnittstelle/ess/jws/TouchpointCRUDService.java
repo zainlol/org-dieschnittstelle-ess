@@ -32,7 +32,7 @@ public class TouchpointCRUDService {
 	}
 
 	@PostConstruct
-	@WebMethod(exclude = true)
+			@WebMethod(exclude = true)
 	public void initialiseContext() {
 		logger.info("@PostConstruct: the wscontext is: " + wscontext);
 
