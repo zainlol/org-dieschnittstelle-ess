@@ -13,7 +13,7 @@ import org.dieschnittstelle.ess.entities.erp.ProductType;
 import org.apache.logging.log4j.Logger;
 
 /*
- * this listener manages a crud executor for proucts in the same way as the TouchpointsServletContextListener for touchpoints
+ * this listener manages a crud executor for products in the same way as the TouchpointsServletContextListener for touchpoints
  */
 @WebListener
 public class ProductServletContextListener implements ServletContextListener {

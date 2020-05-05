@@ -24,12 +24,8 @@ import org.dieschnittstelle.ess.entities.erp.Campaign;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.ProductType;
 
-/*
- * TODO JWS4: machen Sie die Funktionalitaet dieser Klasse als Web Service verfuegbar und verwenden Sie fuer
- *  die Umetzung der Methoden die Instanz von GenericCRUDExecutor<AbstractProduct>,
- *  die Sie aus dem ServletContext auslesen koennen
- */
-@WebService(targetNamespace = "http://dieschnittstelle.org/ess/jws", name = "IProductCRUDService", serviceName = "ProductCRUDWebService", portName = "TouchpointCRUDPort")
+
+@WebService(targetNamespace = "http://dieschnittstelle.org/ess/jws", name = "IProductCRUDService", serviceName = "ProductCRUDWebService", portName = "IProductCRUDServicePort")
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.WRAPPED)
 public class ProductCRUDService {
 

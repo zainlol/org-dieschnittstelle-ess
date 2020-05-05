@@ -6,10 +6,22 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.GenericCRUDEntity;
 
-/*
- * TODO JRS3: entfernen Sie die Auskommentierung der Annotation
- */
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+
+
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "abstractProduct", namespace = "http://dieschnittstelle.org/ess/entities/erp/ws", propOrder = {
+		"id",
+		"price",
+		"name"
+})
+@XmlSeeAlso({
+		IndividualisedProductItem.class
+})
 public abstract class AbstractProduct implements Serializable, GenericCRUDEntity {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractProduct.class);
