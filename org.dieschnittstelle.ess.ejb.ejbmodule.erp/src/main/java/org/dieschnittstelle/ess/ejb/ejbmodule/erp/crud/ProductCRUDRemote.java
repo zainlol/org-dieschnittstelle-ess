@@ -8,7 +8,6 @@ import javax.ejb.Remote;
 import javax.ws.rs.*;
 
 /*
- * TODO EJB+JPA1/2/5:
  * this interface shall be implemented using a stateless EJB with an EntityManager.
  * See TouchpointCRUDStateless for an example EJB with a similar scope of functionality
  */
