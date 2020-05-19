@@ -12,18 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(namespace = "http://dieschnittstelle.org/ess/entities/erp/ws")
+@Entity
 public class IndividualisedProductItem extends AbstractProduct implements Serializable {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(IndividualisedProductItem.class);
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5109263395081656350L;
 
 	private ProductType productType;
 
-	private int expirationAfterStocked;
+	private Integer expirationAfterStocked;
 	
 	public IndividualisedProductItem() {
 		logger.info("<constructor>");
@@ -52,7 +50,7 @@ public class IndividualisedProductItem extends AbstractProduct implements Serial
 	}
 	
 	public String toString() {
-		return "<IndividualisedProductItem " + this.getId() + ", " + this.getName() + ", " + this.productType + ">";
+		return "<IndividualisedProductItem " + this.getId() + ", " + this.getExpirationAfterStocked() + ", " + this.getName() + ", " + this.productType + ">";
 	}
 	
 	public boolean equals(Object other) {

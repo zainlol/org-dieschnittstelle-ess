@@ -9,6 +9,7 @@
 		<!-- <jar-file>lib/somejar.jar</jar-file> -->
 		<!-- <class>com.example.SomeClass</class> -->
 		<jar-file>lib/org.dieschnittstelle.ess.entities.erp.jar</jar-file>
+		<jar-file>lib/org.dieschnittstelle.ess.entities.crm.jar</jar-file>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 		</properties>

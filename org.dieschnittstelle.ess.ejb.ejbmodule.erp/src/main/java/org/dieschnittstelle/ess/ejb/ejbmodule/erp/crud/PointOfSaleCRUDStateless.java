@@ -11,9 +11,6 @@ import javax.persistence.PersistenceContext;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.apache.logging.log4j.Logger;
 
-/**
- * very rudimentary implementation without any logging... 
- */
 @Stateless
 public class PointOfSaleCRUDStateless implements PointOfSaleCRUDRemote, PointOfSaleCRUDLocal {
 
@@ -22,14 +19,10 @@ public class PointOfSaleCRUDStateless implements PointOfSaleCRUDRemote, PointOfS
 	@PersistenceContext(unitName = "erp_PU")
 	private EntityManager em;
 	
-	/*
-	 * TODO ADD1: comment in/out @TransactionAttribute
-	 */
 	@Override
-	//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public PointOfSale createPointOfSale(PointOfSale pos) {
 		em.persist(pos);
-
 		return pos;
 	}
 

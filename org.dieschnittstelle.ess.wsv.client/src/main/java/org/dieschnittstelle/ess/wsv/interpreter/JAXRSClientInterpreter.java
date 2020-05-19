@@ -159,10 +159,6 @@ public class JAXRSClientInterpreter implements InvocationHandler {
             returnValue = jsonSerialiser.readObject(response.getEntity().getContent(), meth.getReturnType());
             // in order to check whether the return type of meth is parameterised generic type, you can use the following expression (meth.getGenericReturnType() instanceof ParameterizedType)
 
-            if (meth.getGenericReturnType() instanceof ParameterizedType) {
-                //TODO:
-            }
-
             // don't forget to cleanup the entity using EntityUtils.consume()
             if (bae != null) {
                 EntityUtils.consume(bae);

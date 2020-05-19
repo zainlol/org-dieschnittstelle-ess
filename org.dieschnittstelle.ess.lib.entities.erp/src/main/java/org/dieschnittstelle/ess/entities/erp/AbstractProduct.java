@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.GenericCRUDEntity;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
 		IndividualisedProductItem.class
 })
+@Entity
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public abstract class AbstractProduct implements Serializable, GenericCRUDEntity {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractProduct.class);
@@ -30,7 +33,8 @@ public abstract class AbstractProduct implements Serializable, GenericCRUDEntity
 	 * 
 	 */
 	private static final long serialVersionUID = 6940403029597060153L;
-
+	@Id
+	@GeneratedValue
 	private long id;
 
 	private String name;
