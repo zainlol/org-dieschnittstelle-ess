@@ -11,8 +11,8 @@ import java.util.List;
 @Stateless
 public class StockSystemServiceImpl implements StockSystemRESTService {
 
-    @Singleton
-    StockSystemSingleton singleton;
+    @EJB
+    StockSystemLocal singleton;
 
     @EJB
     ProductCRUDRemote productRepo;

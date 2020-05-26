@@ -10,16 +10,16 @@ import org.apache.logging.log4j.Logger;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name = "campaign")
 public class Campaign extends AbstractProduct implements Serializable {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(Campaign.class);
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4407600000386810001L;
 
+	@Id
+	@ManyToMany
 	private List<ProductBundle> bundles;
 
 	public Campaign() {

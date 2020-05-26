@@ -4,14 +4,17 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.PointOfSaleCRUDLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.PointOfSaleCRUDStateless;
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.StockItemCRUDLocal;
+import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.StockItemCRUDStateless;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.dieschnittstelle.ess.entities.erp.StockItem;
 
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 public class StockSystemSingleton implements StockSystemLocal {
@@ -58,7 +61,8 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public void removeFromStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
-        logger.info("yes i am working");
+        this.addToStock(product,pointOfSaleId, - units);
+
     }
 
     /**
@@ -73,8 +77,8 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-        logger.info("yes i am working");
-        return null;
+        PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
+        return stockItemCRUDLocal.readStockItemsForPointOfSale(pos).stream().map(i -> i.getProduct()).collect(Collectors.toList());
     }
 
     /**
@@ -88,8 +92,8 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public List<IndividualisedProductItem> getAllProductsOnStock() {
-        logger.info("yes i am working");
-        return null;
+        List<PointOfSale> pos = pointOfSaleCRUDLocal.readAllPointsOfSale();
+        return pos.stream().flatMap(i -> this.getProductsOnStock(i.getId()).stream()).collect(Collectors.toList());
     }
 
     /**
@@ -104,8 +108,8 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public int getUnitsOnStock(IndividualisedProductItem product, long pointOfSaleId) {
-        logger.info("yes i am working");
-        return 0;
+        PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
+        return stockItemCRUDLocal.readStockItem(product,pos).getUnits();
     }
 
     /**
@@ -118,8 +122,8 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-        logger.info("yes i am working");
-        return 0;
+        List<PointOfSale> pos = pointOfSaleCRUDLocal.readAllPointsOfSale();
+        return pos.stream().mapToInt(i -> this.getUnitsOnStock(product,i.getId())).sum();
     }
 
     /**
@@ -133,13 +137,11 @@ public class StockSystemSingleton implements StockSystemLocal {
      */
     @Override
     public List<Long> getPointsOfSale(IndividualisedProductItem product) {
-        logger.info("yes i am working");
-        return null;
+        return stockItemCRUDLocal.readStockItemsForProduct(product).stream().map(i -> i.getPos().getId()).collect(Collectors.toList());
     }
 
     @Override
     public List<StockItem> getCompleteStock() {
-        logger.info("yes i am working");
-        return null;
+        return stockItemCRUDLocal.readAllStockItems();
     }
 }

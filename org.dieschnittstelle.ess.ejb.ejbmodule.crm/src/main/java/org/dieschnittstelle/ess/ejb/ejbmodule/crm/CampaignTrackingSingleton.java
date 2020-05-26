@@ -18,9 +18,6 @@ import org.apache.logging.log4j.Logger;
  * tracks the execution of a compaign
  */
 @Singleton
-/*
- * UE EJB1: kommentieren Sie die @Startup Annotation aus
- */
 @Startup
 @javax.ejb.ConcurrencyManagement(javax.ejb.ConcurrencyManagementType.CONTAINER)
 public class CampaignTrackingSingleton implements CampaignTrackingRemote {

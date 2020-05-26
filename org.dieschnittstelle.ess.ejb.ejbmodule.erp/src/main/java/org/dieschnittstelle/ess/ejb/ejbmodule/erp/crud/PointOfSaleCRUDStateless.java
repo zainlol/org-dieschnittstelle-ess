@@ -8,6 +8,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.apache.logging.log4j.Logger;
 
@@ -39,7 +40,7 @@ public class PointOfSaleCRUDStateless implements PointOfSaleCRUDRemote, PointOfS
 
 	@Override
 	public List<PointOfSale> readAllPointsOfSale() {
-		return em.createQuery("SELECT p FROM PointOfSale AS p").getResultList();
+		return em.createQuery("SELECT p FROM PointOfSale AS p", PointOfSale.class).getResultList();
 	}
 
 }

@@ -1,7 +1,9 @@
 package org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud;
 
+import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
+import org.dieschnittstelle.ess.entities.erp.StockItem;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,6 +19,8 @@ import java.util.List;
 @Stateless
 public class ProductCRUDStateless implements ProductCRUDRemote {
 
+    protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractProduct.class);
+
     @PersistenceContext(unitName = "erp_PU")
     private EntityManager em;
 
@@ -29,12 +33,9 @@ public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @Override
     public List<AbstractProduct> readAllProducts() {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<AbstractProduct> cq = cb.createQuery(AbstractProduct.class);
-        Root<AbstractProduct> rootEntry = cq.from(AbstractProduct.class);
-        CriteriaQuery<AbstractProduct> all = cq.select(rootEntry);
-        TypedQuery<AbstractProduct> allQuery = em.createQuery(all);
-        return allQuery.getResultList();
+        TypedQuery<AbstractProduct> query =
+                em.createQuery("SELECT c FROM AbstractProduct c", AbstractProduct.class);
+        return query.getResultList();
     }
 
     @Override

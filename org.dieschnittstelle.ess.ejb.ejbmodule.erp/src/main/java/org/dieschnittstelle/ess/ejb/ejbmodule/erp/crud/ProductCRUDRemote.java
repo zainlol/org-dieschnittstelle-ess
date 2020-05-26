@@ -24,8 +24,7 @@ public interface ProductCRUDRemote {
 	public List<AbstractProduct> readAllProducts();
 
 	@PUT
-	@Path("/{productId}")
-	public AbstractProduct updateProduct(@PathParam("productId") AbstractProduct update);
+	public AbstractProduct updateProduct(AbstractProduct update);
 
 	@GET
 	@Path("/{productId}")
