@@ -22,8 +22,7 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
 
     @Override
     public StockItem createStockItem(StockItem item) {
-        em.persist(item);
-        return item;
+        return em.merge(item);
     }
 
     //To-Do: Criteria Query
@@ -51,11 +50,13 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
 
     @Override
     public List<StockItem> readStockItemsForProduct(IndividualisedProductItem prod) {
+        //To-Do: Implement
         return null;
     }
 
     @Override
     public List<StockItem> readStockItemsForPointOfSale(PointOfSale pos) {
+        //To-Do: Implement
         return null;
     }
 }
