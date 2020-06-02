@@ -4,6 +4,7 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 import javax.ejb.Remote;
+import javax.jws.WebService;
 import javax.ws.rs.*;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * - let the StockSystemClient in the client project access the web api via this interface - see ShoppingCartClient for an example
  */
 @Remote
+@WebService
 @Path("/stocksystem")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })

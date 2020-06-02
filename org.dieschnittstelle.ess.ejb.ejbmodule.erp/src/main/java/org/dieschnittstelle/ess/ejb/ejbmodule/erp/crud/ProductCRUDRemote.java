@@ -5,6 +5,7 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
 import javax.ejb.Remote;
+import javax.jws.WebService;
 import javax.ws.rs.*;
 
 /*
@@ -12,6 +13,7 @@ import javax.ws.rs.*;
  * See TouchpointCRUDStateless for an example EJB with a similar scope of functionality
  */
 @Remote
+@WebService
 @Path("/products")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })

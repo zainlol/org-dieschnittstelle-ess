@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public class StockSystemSingleton implements StockSystemLocal {
         PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
         StockItem item = stockItemCRUDLocal.readStockItem(product, pos);
         if(item != null){
-            item.setUnits(units);
+            item.setUnits(item.getUnits() + units);
             stockItemCRUDLocal.updateStockItem(item);
         }
         else{
@@ -59,6 +60,7 @@ public class StockSystemSingleton implements StockSystemLocal {
      * @param pointOfSaleId
      * @param units
      */
+    @Transactional
     @Override
     public void removeFromStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
         this.addToStock(product,pointOfSaleId, - units);

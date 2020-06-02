@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bundle")
 public class ProductBundle implements Serializable {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ProductBundle.class);
@@ -23,7 +22,6 @@ public class ProductBundle implements Serializable {
 	@GeneratedValue
 	private long id;
 
-	@Id
 	@ManyToOne
 	private IndividualisedProductItem product;
 

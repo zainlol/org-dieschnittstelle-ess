@@ -32,7 +32,6 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>http://localhost:8080/org.dieschnittstelle.ess.ue.jws4/ProductCRUDWebService?wsdl</wsdl>
-
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

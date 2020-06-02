@@ -6,9 +6,13 @@ import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Singleton;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @Stateless
+@WebService(targetNamespace = "http://dieschnittstelle.org/ess/jws", serviceName = "StockSystemRemoteWebService", endpointInterface = "org.dieschnittstelle.ess.ejb.ejbmodule.erp.StockSystemRESTService")
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 public class StockSystemServiceImpl implements StockSystemRESTService {
 
     @EJB
