@@ -26,11 +26,12 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
         return item;
     }
 
+    //To-Do: Criteria Query
     @Override
     public StockItem readStockItem(IndividualisedProductItem prod, PointOfSale pos) {
         TypedQuery<StockItem> query =
-                em.createQuery("SELECT c FROM StockItem c WHERE c.product = prod AND c.pos = pos.id", StockItem.class);
-       return query.getSingleResult();
+                em.createQuery("SELECT c FROM StockItem c WHERE c.product = " + prod.getId() +  " AND c.pos = " + pos.getId() , StockItem.class);
+       return query.getResultList().isEmpty() ? null : query.getSingleResult();
     }
 
     @Override

@@ -5,9 +5,6 @@ import java.io.Serializable;
 
 public class ProductAtPosPK implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9113210426279286629L;
 
 	private IndividualisedProductItem product;

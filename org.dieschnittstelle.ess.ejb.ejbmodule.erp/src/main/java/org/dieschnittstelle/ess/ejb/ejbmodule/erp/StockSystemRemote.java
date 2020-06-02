@@ -12,7 +12,6 @@ import javax.jws.WebService;
  * this interface shall be implemented using the two CRUD EJBs for PointOfSale and StockItem via
  * local interface below, comments will give some hints at how the implementation could be done
  */
-@WebService
 @Remote
 public interface StockSystemRemote {
 

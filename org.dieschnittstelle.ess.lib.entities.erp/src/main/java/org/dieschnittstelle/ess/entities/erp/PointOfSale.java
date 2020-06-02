@@ -17,10 +17,6 @@ import org.apache.logging.log4j.Logger;
 
 @Entity
 public class PointOfSale implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3397160788902953608L;
 	
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(PointOfSale.class);

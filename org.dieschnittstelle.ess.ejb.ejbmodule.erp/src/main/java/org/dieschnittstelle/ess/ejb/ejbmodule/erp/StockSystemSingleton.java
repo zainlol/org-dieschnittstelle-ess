@@ -37,6 +37,7 @@ public class StockSystemSingleton implements StockSystemLocal {
      * @param pointOfSaleId
      * @param units
      */
+    //To-Do: detached entity fixen mithilfe von Vorlesung
     @Override
     public void addToStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
         PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
