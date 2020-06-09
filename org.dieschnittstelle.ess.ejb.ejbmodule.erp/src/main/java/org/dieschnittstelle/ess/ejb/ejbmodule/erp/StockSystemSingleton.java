@@ -101,7 +101,7 @@ public class StockSystemSingleton implements StockSystemLocal {
     @Override
     public List<IndividualisedProductItem> getAllProductsOnStock() {
         List<PointOfSale> pos = pointOfSaleCRUDLocal.readAllPointsOfSale();
-        return pos.stream().flatMap(i -> this.getProductsOnStock(i.getId()).stream()).collect(Collectors.toList());
+        return pos.stream().flatMap(i -> this.getProductsOnStock(i.getId()).stream()).distinct().collect(Collectors.toList());
     }
 
     /**
