@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud;
 
+import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.PointOfSale;
@@ -12,10 +13,14 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 public class StockItemCRUDStateless implements StockItemCRUDLocal {
+
+    protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(StockItemCRUDStateless.class);
 
     @PersistenceContext(unitName = "erp_PU")
     private EntityManager em;
@@ -25,7 +30,6 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
         return em.merge(item);
     }
 
-    //To-Do: Criteria Query
     @Override
     public StockItem readStockItem(IndividualisedProductItem prod, PointOfSale pos) {
         TypedQuery<StockItem> query =
@@ -50,13 +54,21 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
 
     @Override
     public List<StockItem> readStockItemsForProduct(IndividualisedProductItem prod) {
-        //To-Do: Implement
-        return null;
+        TypedQuery<StockItem> query =
+                em.createQuery("SELECT c FROM StockItem c WHERE c.product = " + prod.getId() , StockItem.class);
+        return query.getResultList();
     }
 
     @Override
     public List<StockItem> readStockItemsForPointOfSale(PointOfSale pos) {
-        //To-Do: Implement
-        return null;
+        TypedQuery<StockItem> query =
+                em.createQuery("SELECT c FROM StockItem c WHERE c.pos = " + pos.getId() , StockItem.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public boolean deleteStock(StockItem stockID) {
+        em.remove(stockID);
+        return true;
     }
 }

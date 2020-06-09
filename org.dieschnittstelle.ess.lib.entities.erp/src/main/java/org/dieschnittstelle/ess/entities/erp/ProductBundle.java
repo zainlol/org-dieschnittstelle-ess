@@ -13,9 +13,6 @@ public class ProductBundle implements Serializable {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ProductBundle.class);
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1501911067906145681L;
 
 	@Id
@@ -23,7 +20,7 @@ public class ProductBundle implements Serializable {
 	private long id;
 
 	@ManyToOne
-	private IndividualisedProductItem product;
+	private AbstractProduct product;
 
 	private int units;
 
@@ -31,16 +28,16 @@ public class ProductBundle implements Serializable {
 		logger.info("<constructor>");
 	}
 
-	public ProductBundle(IndividualisedProductItem product, int units) {
+	public ProductBundle(AbstractProduct product, int units) {
 		this.product = product;
 		this.units = units;
 	}
 
-	public IndividualisedProductItem getProduct() {
+	public AbstractProduct getProduct() {
 		return this.product;
 	}
 
-	public void setProduct(IndividualisedProductItem product) {
+	public void setProduct(AbstractProduct product) {
 		this.product = product;
 	}
 

@@ -67,4 +67,6 @@ public interface StockItemCRUDLocal {
      */
     public List<StockItem> readStockItemsForPointOfSale(PointOfSale pos);
 
+    public boolean deleteStock(StockItem stockID);
+
 }

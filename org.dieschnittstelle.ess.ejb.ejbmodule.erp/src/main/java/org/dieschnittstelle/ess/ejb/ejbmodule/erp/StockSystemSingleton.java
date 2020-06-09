@@ -44,7 +44,12 @@ public class StockSystemSingleton implements StockSystemLocal {
         StockItem item = stockItemCRUDLocal.readStockItem(product, pos);
         if(item != null){
             item.setUnits(item.getUnits() + units);
-            stockItemCRUDLocal.updateStockItem(item);
+            if(item.getUnits() > 0){
+                stockItemCRUDLocal.updateStockItem(item);
+            }
+            else{
+                stockItemCRUDLocal.deleteStock(item);
+            }
         }
         else{
             StockItem newItem = new StockItem(product,pos,units);

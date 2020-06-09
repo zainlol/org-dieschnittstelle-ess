@@ -17,7 +17,7 @@ public class Campaign extends AbstractProduct implements Serializable {
 
 	private static final long serialVersionUID = 4407600000386810001L;
 
-	@ManyToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<ProductBundle> bundles;
 
 	public Campaign() {

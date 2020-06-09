@@ -5,9 +5,19 @@ import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
-// TODO: PAT1: this is the interface to be provided as a rest service if rest service access is used
-public interface PurchaseShoppingCartService {
+import javax.ejb.Remote;
+import javax.jws.WebService;
+import javax.ws.rs.*;
 
-	public void purchase(long shoppingCartId,long touchpointId,long customerId) throws ShoppingException;
+// TODO: PAT1: this is the interface to be provided as a rest service if rest service access is used
+@Remote
+@WebService
+@Path("/shoppingcart")
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
+public interface PurchaseShoppingCartService {
+	@GET
+	@Path("/purchase")
+	public void purchase(@QueryParam("shoppingCartId")long shoppingCartId, @QueryParam("touchpointId")long touchpointId, @QueryParam("customerId")long customerId) throws ShoppingException;
 	
 }
