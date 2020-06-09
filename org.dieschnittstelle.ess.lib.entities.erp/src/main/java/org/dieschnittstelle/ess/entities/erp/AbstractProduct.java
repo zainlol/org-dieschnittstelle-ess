@@ -24,17 +24,16 @@ import javax.xml.bind.annotation.XmlType;
 		IndividualisedProductItem.class
 })
 @Entity
+@SequenceGenerator(name = "abstract_sequence", sequenceName = "product_id_sequence")
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public abstract class AbstractProduct implements Serializable, GenericCRUDEntity {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractProduct.class);
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6940403029597060153L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="abstract_sequence")
 	private long id;
 
 	private String name;
