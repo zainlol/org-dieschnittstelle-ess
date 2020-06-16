@@ -17,7 +17,7 @@ import javax.ejb.Stateless;
 import java.util.List;
 
 @Stateful
-public class ShoppingSession implements PurchaseShoppingCartService{
+public class ShoppingSession {
 
     protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ShoppingSession.class);
 
@@ -117,11 +117,4 @@ public class ShoppingSession implements PurchaseShoppingCartService{
         }
     }
 
-    @Override
-    public void purchase(long shoppingCartId, long touchpointId, long customerId) throws ShoppingException {
-        customer = customerRepo.readCustomer(customerId);
-        touchpoint = touchpointRepo.readTouchpoint(touchpointId);
-        //shoppingCart = shoppingCartRepo.readShoppingCart(shoppingCartId);
-        purchase();
-    }
 }

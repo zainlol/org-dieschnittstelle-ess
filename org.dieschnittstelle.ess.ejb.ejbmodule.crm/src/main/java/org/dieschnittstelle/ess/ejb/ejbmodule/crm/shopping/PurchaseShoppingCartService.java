@@ -9,14 +9,14 @@ import javax.ejb.Remote;
 import javax.jws.WebService;
 import javax.ws.rs.*;
 
-// TODO: PAT1: this is the interface to be provided as a rest service if rest service access is used
+// PAT1: this is the interface to be provided as a rest service if rest service access is used
 @Remote
 @WebService
 @Path("/shoppingcart")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 public interface PurchaseShoppingCartService {
-	@GET
+	@POST
 	@Path("/purchase")
 	public void purchase(@QueryParam("shoppingCartId")long shoppingCartId, @QueryParam("touchpointId")long touchpointId, @QueryParam("customerId")long customerId) throws ShoppingException;
 	
