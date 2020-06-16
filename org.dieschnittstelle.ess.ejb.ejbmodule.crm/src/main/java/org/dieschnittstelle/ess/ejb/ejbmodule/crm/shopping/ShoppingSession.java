@@ -3,10 +3,7 @@ package org.dieschnittstelle.ess.ejb.ejbmodule.crm.shopping;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.*;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerCRUDLocal;
-import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerTransactionCRUDLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.TouchpointCRUDLocal;
-import org.dieschnittstelle.ess.ejb.ejbmodule.erp.StockSystemLocal;
-import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.ProductCRUDRemote;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
@@ -15,13 +12,14 @@ import org.dieschnittstelle.ess.entities.erp.Campaign;
 import org.dieschnittstelle.ess.entities.erp.ProductBundle;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import java.util.List;
 
-@Stateless
-public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartService{
+@Stateful
+public class ShoppingSession implements PurchaseShoppingCartService{
 
-    protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(PurchaseShoppingCartServiceImpl.class);
+    protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ShoppingSession.class);
 
     @EJB
     CustomerCRUDLocal customerRepo;
