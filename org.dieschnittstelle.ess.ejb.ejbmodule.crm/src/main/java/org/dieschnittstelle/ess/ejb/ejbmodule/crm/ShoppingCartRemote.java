@@ -12,5 +12,4 @@ public interface ShoppingCartRemote {
 	public void addItem(ShoppingCartItem product);
 	
 	public List<ShoppingCartItem> getItems();
-	
 }

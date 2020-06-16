@@ -9,6 +9,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @Singleton
 @Startup
-public class ShoppingCartRESTServiceImpl implements ShoppingCartRESTService {
+public class ShoppingCartRESTServiceImpl implements ShoppingCartRESTService, ShoppingCartServiceLocal {
 
     protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ShoppingCartRESTServiceImpl.class);
 
@@ -78,5 +79,8 @@ public class ShoppingCartRESTServiceImpl implements ShoppingCartRESTService {
 
     }
 
+    public ShoppingCartRemote getShoppingCart(long id){
+        return em.find(ShoppingCartStateful.class,id);
+    }
 
 }
