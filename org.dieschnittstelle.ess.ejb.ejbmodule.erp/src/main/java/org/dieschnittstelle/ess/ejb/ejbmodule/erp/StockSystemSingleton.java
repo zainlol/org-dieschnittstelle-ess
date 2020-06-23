@@ -117,7 +117,8 @@ public class StockSystemSingleton implements StockSystemLocal {
     @Override
     public int getUnitsOnStock(IndividualisedProductItem product, long pointOfSaleId) {
         PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
-        return stockItemCRUDLocal.readStockItem(product,pos).getUnits();
+        StockItem item =  stockItemCRUDLocal.readStockItem(product,pos);
+        return item != null ? item.getUnits() : 0;
     }
 
     /**

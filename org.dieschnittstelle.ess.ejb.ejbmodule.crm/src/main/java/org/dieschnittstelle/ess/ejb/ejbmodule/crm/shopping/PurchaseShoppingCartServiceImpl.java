@@ -4,12 +4,14 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.*;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerCRUDLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.TouchpointCRUDLocal;
+import org.dieschnittstelle.ess.ejb.ejbmodule.erp.StockSystemLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.ProductCRUDRemote;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
 import org.dieschnittstelle.ess.entities.crm.ShoppingCartItem;
 import org.dieschnittstelle.ess.entities.erp.Campaign;
+import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.ProductBundle;
 
 import javax.ejb.EJB;
@@ -34,6 +36,8 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
     ProductCRUDRemote productCRUDRemote;
     @EJB
     ShoppingCartServiceLocal shoppingCartRepo;
+    @EJB
+    StockSystemLocal stockSystemLocal;
 
     Customer customer;
     AbstractTouchpoint touchpoint;
@@ -88,7 +92,7 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
     }
 
     /*
-     * TODO PAT2: complete the method implementation in your server-side component for shopping / purchasing
+     * PAT2: complete the method implementation in your server-side component for shopping / purchasing
      */
     private void checkAndRemoveProductsFromStock() {
         logger.info("checkAndRemoveProductsFromStock");
@@ -100,22 +104,29 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
             if (item.isCampaign()) {
                 this.campaignTracking.purchaseCampaignAtTouchpoint(item.getErpProductId(), this.touchpoint,
                         item.getUnits());
-                // TODO: wenn Sie eine Kampagne haben, muessen Sie hier
+                // wenn Sie eine Kampagne haben, muessen Sie hier
                 // 1) ueber die ProductBundle Objekte auf dem Campaign Objekt iterieren, und
                 for(ProductBundle bundle : ((Campaign)item.getProductObj()).getBundles()){
+                    // 2) fuer jedes ProductBundle das betreffende Produkt in der auf dem Bundle angegebenen Anzahl, multipliziert mit dem Wert von
+                    // item.getUnits() aus dem Warenkorb,
+                    // - hinsichtlich Verfuegbarkeit ueberpruefen, und
+                    // - falls verfuegbar, aus dem Warenlager entfernen - nutzen Sie dafür die StockSystem EJB
+                    // (Anm.: item.getUnits() gibt Ihnen Auskunft darüber, wie oft ein Produkt, im vorliegenden Fall eine Kampagne, im
+                    // Warenkorb liegt)
+                    int total = bundle.getUnits() * item.getUnits();
 
+                    if(total < stockSystemLocal.getUnitsOnStock((IndividualisedProductItem) bundle.getProduct(), touchpoint.getErpPointOfSaleId())){
+                        stockSystemLocal.removeFromStock((IndividualisedProductItem) bundle.getProduct(), touchpoint.getErpPointOfSaleId(), total);
+                    }
                 }
-                // 2) fuer jedes ProductBundle das betreffende Produkt in der auf dem Bundle angegebenen Anzahl, multipliziert mit dem Wert von
-                // item.getUnits() aus dem Warenkorb,
-                // - hinsichtlich Verfuegbarkeit ueberpruefen, und
-                // - falls verfuegbar, aus dem Warenlager entfernen - nutzen Sie dafür die StockSystem EJB
-                // (Anm.: item.getUnits() gibt Ihnen Auskunft darüber, wie oft ein Produkt, im vorliegenden Fall eine Kampagne, im
-                // Warenkorb liegt)
             } else {
-                // TODO: andernfalls (wenn keine Kampagne vorliegt) muessen Sie
+                // andernfalls (wenn keine Kampagne vorliegt) muessen Sie
                 // 1) das Produkt in der in item.getUnits() angegebenen Anzahl hinsichtlich Verfuegbarkeit ueberpruefen und
                 /// item.getUnits()
-                // 2) das Produkt, falls verfuegbar, in der entsprechenden Anzahl aus dem Warenlager entfernen
+                if(item.getUnits() < stockSystemLocal.getUnitsOnStock((IndividualisedProductItem) item.getProductObj(), touchpoint.getErpPointOfSaleId()) ) {
+                    // 2) das Produkt, falls verfuegbar, in der entsprechenden Anzahl aus dem Warenlager entfernen
+                    stockSystemLocal.removeFromStock((IndividualisedProductItem) item.getProductObj(), touchpoint.getErpPointOfSaleId(), item.getUnits());
+                }
             }
 
         }
