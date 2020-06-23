@@ -21,7 +21,7 @@ import java.util.List;
 @Stateless
 @WebService(targetNamespace = "http://dieschnittstelle.org/ess/jws", serviceName = "ProductCRUDRemoteWebService", endpointInterface = "org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.ProductCRUDRemote")
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-public class ProductCRUDStateless implements ProductCRUDRemote {
+public class ProductCRUDStateless implements ProductCRUDRemote, ProductCRUDLocal {
 
     protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractProduct.class);
 

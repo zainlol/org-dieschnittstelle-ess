@@ -39,8 +39,6 @@ public class ShoppingSessionClient implements ShoppingBusinessDelegate {
 		}/* TODO: instantiate the proxy using the EJBProxyFactory (see the other client classes) */
 	}
 
-	/* TODO: implement the following methods s */
-
 	@Override
 	public void setTouchpoint(AbstractTouchpoint touchpoint) {
 		this.touchpoint = touchpoint;

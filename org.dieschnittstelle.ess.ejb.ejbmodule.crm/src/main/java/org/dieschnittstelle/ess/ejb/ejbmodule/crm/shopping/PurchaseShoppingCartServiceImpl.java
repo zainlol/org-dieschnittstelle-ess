@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.*;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerCRUDLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.TouchpointCRUDLocal;
+import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.ProductCRUDRemote;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
@@ -29,6 +30,8 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
     CampaignTrackingRemote campaignTracking;
     @EJB
     CustomerTrackingRemote customerTracking;
+    @EJB
+    ProductCRUDRemote productCRUDRemote;
     @EJB
     ShoppingCartServiceLocal shoppingCartRepo;
 
@@ -92,8 +95,8 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
 
         for (ShoppingCartItem item : this.shoppingCart.getItems()) {
 
-            // TODO: ermitteln Sie das AbstractProduct für das gegebene ShoppingCartItem. Nutzen Sie dafür dessen erpProductId und die ProductCRUD EJB
-
+            //ermitteln Sie das AbstractProduct für das gegebene ShoppingCartItem. Nutzen Sie dafür dessen erpProductId und die ProductCRUD EJB
+            item.setProductObj(productCRUDRemote.readProduct(item.getErpProductId()));
             if (item.isCampaign()) {
                 this.campaignTracking.purchaseCampaignAtTouchpoint(item.getErpProductId(), this.touchpoint,
                         item.getUnits());
@@ -111,6 +114,7 @@ public class PurchaseShoppingCartServiceImpl implements PurchaseShoppingCartServ
             } else {
                 // TODO: andernfalls (wenn keine Kampagne vorliegt) muessen Sie
                 // 1) das Produkt in der in item.getUnits() angegebenen Anzahl hinsichtlich Verfuegbarkeit ueberpruefen und
+                /// item.getUnits()
                 // 2) das Produkt, falls verfuegbar, in der entsprechenden Anzahl aus dem Warenlager entfernen
             }
 

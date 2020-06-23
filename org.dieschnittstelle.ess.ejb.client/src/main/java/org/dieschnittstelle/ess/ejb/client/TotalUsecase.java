@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.*;
+import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingSession;
 import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingSessionClient;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.CampaignTrackingRemote;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.ShoppingException;
@@ -18,7 +19,6 @@ import org.dieschnittstelle.ess.entities.crm.CampaignExecution;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
 import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingBusinessDelegate;
-import org.dieschnittstelle.ess.ejb.client.shopping.ShoppingSession;
 
 import static org.dieschnittstelle.ess.utils.Utils.*;
 
@@ -48,7 +48,7 @@ public class TotalUsecase {
 
 	// TODO: PAT1: set to true for testing facade
 	// TODO: ADD4: set to true for testing success-case for transactions and ShoppingException
-	private boolean useShoppingSessionFacade = false /*true*/;
+	private boolean useShoppingSessionFacade = true /*true*/;
 
 	// declare the attributes that will be instantiated with the ejb clients - note that the attributes use the remote interface types
 	private ProductCRUDRemote productCRUD;
