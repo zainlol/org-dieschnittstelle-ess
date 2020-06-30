@@ -28,7 +28,7 @@ public class TestStockSystemSOAPService {
 	// TODO change interface to understand objects instead of ids
 	@Test
 	public void stockSystemServiceWorks() {
-		// read out all products
+				// read out all products
     	List<IndividualisedProductItem> products = serviceProxy.getAllProductsOnStock();
 		assertTrue("stock exists and can be read", products.size() > 0);
 

@@ -33,11 +33,10 @@ public class StockSystemSingleton implements StockSystemLocal {
      * should check whether stock item for the given combination of product and pointOfSale already exists.
      * Depending on this, the existing stock item will be updated or a new one will be created
      *
-     * @param product
-     * @param pointOfSaleId
-     * @param units
+     * @param product Product to add
+     * @param pointOfSaleId PointOfSale where the product should be added
+     * @param units How many units should be added
      */
-    //To-Do: detached entity fixen mithilfe von Vorlesung
     @Override
     public void addToStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
         PointOfSale pos = pointOfSaleCRUDLocal.readPointOfSale(pointOfSaleId);
@@ -66,7 +65,7 @@ public class StockSystemSingleton implements StockSystemLocal {
      * @param pointOfSaleId
      * @param units
      */
-    @Transactional
+    @Transactional(Transactional.TxType.MANDATORY)
     @Override
     public void removeFromStock(IndividualisedProductItem product, long pointOfSaleId, int units) {
         this.addToStock(product,pointOfSaleId, - units);
